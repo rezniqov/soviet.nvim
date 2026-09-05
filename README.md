@@ -1,5 +1,7 @@
 # ★ soviet.nvim
 
+![soviet.nvim — dark constructivist poster with cream typography, a hammer and sickle, and a red star](assets/soviet-dark-poster-v2.png)
+
 Light and dark Neovim colorschemes inspired by Soviet visual culture: book covers, posters, enamel signs, design bureaus, and military colors.
 
 Warm graphite and book paper form the foundation. Burgundy, ochre, blue, and turquoise distinguish syntax, while olive and khaki provide secondary accents. Poster red marks headings, search, and errors. This is an interpretation for the screen, not a reconstruction of historical printing inks.
