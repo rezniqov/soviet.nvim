@@ -1,0 +1,102 @@
+*soviet.txt*  Soviet-inspired light and dark colorscheme for Neovim
+
+INTRODUCTION                                                    *soviet*
+
+soviet.nvim draws on book covers, posters, enamel signs and military colors.
+Warm graphite and paper frame burgundy keywords, brass functions, blue types
+and turquoise strings. Olive and khaki remain secondary accents. Poster red
+marks headings, errors and active search. This is an interpretation for the
+screen, not a reconstruction of historical inks.
+Requires Neovim 0.10+ and a true-color terminal. No dependencies.
+
+USAGE                                                           *soviet-usage*
+>
+    vim.cmd.colorscheme("soviet-dark")
+    -- or: vim.cmd.colorscheme("soviet-light")
+<
+Optional configuration must run before applying the colorscheme:
+>
+    require("soviet").setup({
+      transparent = false,
+      terminal_colors = true,
+      styles = {
+        comments = { italic = true },
+        keywords = {},
+        functions = {},
+        strings = {},
+        variables = {},
+      },
+      palette = {},
+      integrations = {
+        telescope = true,
+        gitsigns = true,
+        completion = true,
+        trees = true,
+        which_key = true,
+        indent_blankline = true,
+        lazy = true,
+        mini = true,
+        snacks = true,
+      },
+    })
+    vim.cmd.colorscheme("soviet-dark")
+<
+CONFIGURATION                                                  *soviet-setup*
+
+setup({opts}) resets options to defaults, then merges the supplied options.
+It does not apply highlights. Reapply the chosen colorscheme after changing
+options. Choose the variant by name: soviet-dark or soviet-light. There is no
+style option or OS synchronization. Replace old :colorscheme soviet calls
+with one of the two variant names.
+
+transparent         Removes editor and sidebar backgrounds. Floats, menus,
+                    selections and statuslines retain their backgrounds.
+terminal_colors     Sets terminal_color_0 through terminal_color_15. False
+                    leaves existing terminal globals untouched.
+                    Existing terminal buffers may retain old ANSI colors;
+                    recreate those buffers after an appearance change.
+styles              Highlight attributes for comments, keywords, functions,
+                    strings and variables. Use italic = false to disable
+                    default comment italics.
+palette             Override palette keys with #RRGGBB strings. See README
+                    or lua/soviet/palette.lua for all keys. Overrides apply
+                    to both variants; on_highlights receives the chosen one.
+integrations        Disable individual integrations with false. completion
+                    covers cmp and blink; trees covers nvim-tree, neo-tree
+                    and oil. No plugin is loaded by the theme.
+on_highlights       Optional function(highlights, palette), called before
+                    applying highlights. Mutate the supplied table:
+>
+    require("soviet").setup({
+      on_highlights = function(hl, c)
+        hl.Comment = { fg = c.muted, italic = false }
+      end,
+    })
+<
+Replace linked groups with a new table; a link overrides other attributes.
+See |nvim_set_hl()| for available highlight attributes.
+
+PALETTE                                                        *soviet-palette*
+>
+    local colors = require("soviet").get_palette()
+<
+Returns a fresh palette including configured overrides. Changing this table
+does not change the theme. Uses the active variant, or dark before theme load.
+Pass "dark" or "light" to request a specific palette. Use setup({ palette = ... })
+for persistent options.
+
+LUALINE                                                        *soviet-lualine*
+>
+    require("lualine").setup({ options = { theme = "soviet" } })
+<
+The lualine theme "soviet" follows the active variant. Fixed "soviet-dark" and
+"soviet-light" themes are also available, including for lualine's auto detection.
+Configure lualine after applying the colorscheme. The cache is cleared on each
+colorscheme load; lualine's ColorScheme handler picks up the new palette.
+
+LICENSE                                                        *soviet-license*
+
+Copyright 2026 Anton Reznikov.
+Licensed under the Apache License, Version 2.0. See LICENSE in the repository.
+
+ vim:tw=78:ts=8:noet:ft=help:norl:
