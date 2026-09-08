@@ -9,7 +9,7 @@ function M.get(c)
   return {
     NeotestAdapterName  = { fg = c.purple, bold = true },
     NeotestBorder       = { fg = c.blue },
-    NeotestDir          = { fg = c.blue },
+    NeotestDir          = { fg = c.enamel_blue },
     NeotestExpandMarker = { fg = c.fg_sidebar },
     NeotestFailed       = { fg = c.red },
     NeotestFile         = { fg = c.teal },

@@ -24,7 +24,7 @@ function M.get(c, opts)
     ["@constant.builtin"]           = "Special",
     ["@constant.macro"]             = "Define",
     ["@constructor"]                = { fg = c.magenta }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
-    ["@constructor.tsx"]            = { fg = c.blue1 },
+    ["@constructor.tsx"]            = { fg = c.enamel_blue },
     ["@diff.delta"]                 = "DiffChange",
     ["@diff.minus"]                 = "DiffDelete",
     ["@diff.plus"]                  = "DiffAdd",
@@ -91,7 +91,7 @@ function M.get(c, opts)
     ["@tag.tsx"]                    = { fg = c.blue },
     ["@tag.javascript"]             = { fg = c.blue },
     ["@type"]                       = "Type",
-    ["@type.builtin"]               = { fg = Util.blend_bg(c.blue1, 0.8) },
+    ["@type.builtin"]               = { fg = Util.blend_bg(c.enamel_blue, 0.8) },
     ["@type.definition"]            = "Typedef",
     ["@type.qualifier"]             = "@keyword",
     ["@variable"]                   = { fg = c.fg, style = opts.styles.variables }, -- Any variable name that does not have another highlight.

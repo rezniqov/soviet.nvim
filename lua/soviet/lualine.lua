@@ -17,7 +17,7 @@ function M.get(style)
     visual = mode(c.burgundy),
     replace = mode(c.red),
     command = mode(c.ochre),
-    terminal = mode(c.blue),
+    terminal = mode(c.enamel_blue),
     inactive = {
       a = { fg = c.muted, bg = c.bg_statusline },
       b = { fg = c.muted, bg = c.bg_statusline },

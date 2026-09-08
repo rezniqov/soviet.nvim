@@ -226,6 +226,8 @@ Plugin coverage includes Aerial, ALE, Alpha, Barbar, Blink, Bufferline, Codeium,
 
 Core Vim syntax, Tree-sitter, LSP semantic tokens, diagnostics, inlay hints, diff views, and completion-kind groups are always available. Integrations define highlights only; they never load the corresponding plugins.
 
+Plugin UI uses brass and ochre as its primary accents, with burgundy, olive, and turquoise for secondary states. Enamel blue is deliberately reserved for types, file paths, and informational diagnostics so it does not dominate LazyVim's interface.
+
 LSP semantic tokens use the same roles as Tree-sitter. The final result depends on the parser's captures and the language server's tokens.
 
 ### Lualine

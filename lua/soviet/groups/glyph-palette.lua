@@ -10,7 +10,7 @@ function M.get(c)
     GlyphPalette1 = { fg = c.red1 },
     GlyphPalette2 = { fg = c.green },
     GlyphPalette3 = { fg = c.yellow },
-    GlyphPalette4 = { fg = c.blue },
+    GlyphPalette4 = { fg = c.enamel_blue },
     GlyphPalette6 = { fg = c.green1 },
     GlyphPalette7 = { fg = c.fg },
     GlyphPalette9 = { fg = c.red },

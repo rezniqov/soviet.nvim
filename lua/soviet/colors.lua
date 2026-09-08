@@ -17,8 +17,13 @@ function M.setup(opts)
   c.fg_dark = c.muted
   c.fg_gutter = c.border
 
-  c.blue1 = c.blue
-  c.blue2 = c.blue
+  -- Tokyonight integrations use several blue slots as general-purpose
+  -- accents. Spread those roles across warmer Soviet printing inks and keep
+  -- enamel blue for the few places where it carries semantic meaning.
+  c.enamel_blue = c.blue
+  c.blue = c.brass
+  c.blue1 = c.ochre
+  c.blue2 = c.teal
   c.blue5 = c.muted
   c.blue6 = c.teal
   c.blue7 = c.selection
@@ -63,10 +68,10 @@ function M.setup(opts)
 
   c.error = c.red_bright
   c.warning = c.ochre
-  c.info = c.blue
+  c.info = c.enamel_blue
   c.hint = c.olive
   c.todo = c.brass
-  c.rainbow = { c.red, c.ochre, c.brass, c.added, c.teal, c.blue, c.burgundy, c.khaki }
+  c.rainbow = { c.red, c.ochre, c.brass, c.added, c.teal, c.enamel_blue, c.burgundy, c.khaki }
 
   c.terminal = {
     black = opts.style == "light" and c.fg_bright or c.bg_dark,
@@ -77,8 +82,8 @@ function M.setup(opts)
     green_bright = c.added_bright,
     yellow = c.ochre,
     yellow_bright = c.brass,
-    blue = c.blue,
-    blue_bright = c.blue,
+    blue = c.enamel_blue,
+    blue_bright = c.enamel_blue,
     magenta = c.burgundy,
     magenta_bright = c.burgundy,
     cyan = c.teal,

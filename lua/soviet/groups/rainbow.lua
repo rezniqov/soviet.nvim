@@ -12,7 +12,7 @@ function M.get(c, opts)
     RainbowDelimiterOrange = { fg = c.orange },
     RainbowDelimiterYellow = { fg = c.yellow },
     RainbowDelimiterGreen  = { fg = c.green },
-    RainbowDelimiterBlue   = { fg = c.blue },
+    RainbowDelimiterBlue   = { fg = c.enamel_blue },
     RainbowDelimiterViolet = { fg = c.purple },
     RainbowDelimiterCyan   = { fg = c.cyan },
   }
