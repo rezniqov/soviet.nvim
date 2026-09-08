@@ -35,9 +35,8 @@ function M.get(c, opts)
     CursorLineNr                = { fg = c.orange, bold = true }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     LineNrAbove                 = { fg = c.fg_gutter },
     LineNrBelow                 = { fg = c.fg_gutter },
-    -- Snacks maps MatchParen to LazyGit's active border. Burgundy stays
-    -- distinctive without the high contrast of ochre or enamel blue.
-    MatchParen                  = { fg = c.burgundy, bold = true }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    -- Snacks maps MatchParen to LazyGit's active border.
+    MatchParen                  = { fg = c.border_active, bold = true }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg                     = { fg = c.fg_dark, bold = true }, -- 'showmode' message (e.g., "-- INSERT -- ")
     MsgArea                     = { fg = c.fg_dark }, -- Area for messages and cmdline
     MoreMsg                     = { fg = c.olive }, -- |more-prompt|
@@ -46,9 +45,7 @@ function M.get(c, opts)
     NormalNC                    = { fg = c.fg, bg = opts.transparent and c.none or opts.dim_inactive and c.bg_dark or c.bg }, -- normal text in non-current windows
     NormalSB                    = { fg = c.fg_sidebar, bg = c.bg_sidebar }, -- normal text in sidebar
     NormalFloat                 = { fg = c.fg_float, bg = c.bg_float }, -- Normal text in floating windows.
-    -- Snacks uses FloatBorder for inactive LazyGit panels. Keep it quieter
-    -- than titles and the active panel border.
-    FloatBorder                 = { fg = c.border, bg = c.bg_float },
+    FloatBorder                 = { fg = c.border_active, bg = c.bg_float },
     FloatTitle                  = { fg = c.border_highlight, bg = c.bg_float },
     FloatFooter                 = { fg = c.muted, bg = c.bg_float },
     Pmenu                       = { bg = c.bg_popup, fg = c.fg }, -- Popup menu: normal item.
