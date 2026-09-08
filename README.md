@@ -61,6 +61,30 @@ Add this plugin spec to your existing [lazy.nvim](https://lazy.folke.io/spec) se
 
 Restart Neovim to install the plugin. Choose your default variant in the `config` function. If you organize specs into imported files, wrap the spec above in `return { ... }`.
 
+### LazyVim
+
+Soviet automatically detects plugins registered with lazy.nvim. Add this to `lua/plugins/colorscheme.lua`:
+
+```lua
+return {
+  {
+    "rezniqov/soviet.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "soviet-dark",
+      -- colorscheme = "soviet-light",
+    },
+  },
+}
+```
+
+When loaded by LazyVim, Soviet reads lazy.nvim's plugin registry and generates highlight groups only for installed integrations. No additional LazyVim-specific configuration is required.
+
 ## Usage
 
 Choose a variant after installing the plugin:
@@ -93,27 +117,41 @@ require("soviet").setup({
     functions = {},
     strings = {},
     variables = {},
+    sidebars = "dark", -- "dark", "normal", or "transparent"
+    floats = "dark", -- "dark", "normal", or "transparent"
   },
-  integrations = {
-    telescope = true,
-    gitsigns = true,
-    completion = true, -- nvim-cmp and blink.cmp
-    trees = true, -- nvim-tree, neo-tree, and oil.nvim
-    which_key = true,
-    indent_blankline = true,
-    lazy = true,
-    mini = true,
-    snacks = true,
+  dim_inactive = false,
+  lualine_bold = false,
+  cache = true,
+  plugins = {
+    all = package.loaded.lazy == nil,
+    auto = true,
   },
+  integrations = {}, -- Legacy aliases; prefer plugins.
   palette = {},
-  -- on_highlights = function(highlights, palette) end,
+  -- on_colors = function(colors) end,
+  -- on_highlights = function(highlights, colors) end,
 })
 vim.cmd.colorscheme("soviet-dark")
 ```
 
 Each `setup()` call merges your options with fresh defaults. It saves the configuration; reapply the chosen colorscheme to update highlights.
 
-`transparent` removes editor and sidebar backgrounds while keeping backgrounds for floating windows, menus, and statuslines. Setting `terminal_colors = false` leaves existing ANSI palette settings untouched. Disabling an integration skips its highlight definitions; integrations never load their associated plugins.
+`transparent` removes the main editor background. Sidebar and floating-window backgrounds are controlled independently by `styles.sidebars` and `styles.floats`. Setting `terminal_colors = false` leaves existing ANSI palette settings untouched.
+
+With lazy.nvim, `plugins.auto = true` enables integrations found in its registry. Outside lazy.nvim, `plugins.all` defaults to `true`, so plugin highlight groups are defined eagerly. You can override either behavior by group name or lazy.nvim plugin name:
+
+```lua
+plugins = {
+  all = false,
+  auto = true,
+  snacks = true,
+  ["render-markdown.nvim"] = false,
+  telescope = { enabled = true },
+}
+```
+
+The old `integrations` table is still accepted for backwards compatibility; new configurations should use `plugins`.
 
 ### Custom colors and highlights
 
@@ -121,6 +159,9 @@ Each `setup()` call merges your options with fresh defaults. It saves the config
 require("soviet").setup({
   styles = { comments = { italic = false } },
   palette = { property = "#C8C1AA" },
+  on_colors = function(c)
+    c.border_highlight = c.red
+  end,
   on_highlights = function(hl, c)
     hl.CursorLineNr = { fg = c.brass, bold = false }
     hl["@keyword.return"] = { fg = c.red_bright }
@@ -130,9 +171,9 @@ require("soviet").setup({
 vim.cmd.colorscheme("soviet-dark")
 ```
 
-The callback runs after all highlight definitions are assembled and before they are applied. Replace a linked group's entire table when changing its colors: a `link` takes precedence over other attributes.
+The `on_highlights` callback runs after all highlight definitions are assembled and before they are applied. Replace a linked group's entire table when changing its colors: a `link` takes precedence over other attributes.
 
-Palette overrides apply to both variants. The callback receives the selected variant's palette. Using its colors keeps highlights consistent with that variant. The `on_accent` color provides light text on red search backgrounds.
+Palette overrides apply to both variants. `on_colors` runs after derived colors are created; `on_highlights` then receives the complete color table. Using its colors keeps highlights consistent with the active variant.
 
 Retrieve a fresh palette, including your overrides, with:
 
@@ -181,7 +222,9 @@ Comments and secondary elements are deliberately subdued. Adjust `palette.commen
 
 Built-in coverage includes Vim syntax, Tree-sitter, LSP semantic tokens, diagnostics, inlay hints, diff views, spell checking, and terminal ANSI colors.
 
-Plugin highlight groups cover Telescope, Gitsigns, nvim-cmp, blink.cmp, nvim-tree, neo-tree, oil.nvim, which-key, indent-blankline, lazy.nvim, mini.nvim, and Snacks. Plugins do not need to be installed for these groups to be defined. Icons with their own palettes may retain their original colors.
+Plugin coverage includes Aerial, ALE, Alpha, Barbar, Blink, Bufferline, Codeium, Copilot, Dashboard, DAP, Flash, fzf-lua, GitGutter, Gitsigns, GrugFar, Headlines, Hop, Illuminate, indent-blankline, Lazy, Leap, Lspsaga, the Mini modules, Navic, neo-tree, Neogit, Neotest, Noice, nvim-cmp, nvim-notify, nvim-scrollbar, nvim-tree, Octo, Rainbow Delimiters, render-markdown, Sidekick, Snacks, Supermaven, Telescope, Treesitter Context, Trouble, Vimwiki, WhichKey, Yanky, and related integrations. Oil support is retained as well.
+
+Core Vim syntax, Tree-sitter, LSP semantic tokens, diagnostics, inlay hints, diff views, and completion-kind groups are always available. Integrations define highlights only; they never load the corresponding plugins.
 
 LSP semantic tokens use the same roles as Tree-sitter. The final result depends on the parser's captures and the language server's tokens.
 
@@ -211,15 +254,16 @@ colors/soviet-light.lua         Light colorscheme entry point
 lua/soviet/init.lua             Public API and highlight application
 lua/soviet/config.lua           Defaults and configuration
 lua/soviet/palette.lua          Both palettes
-lua/soviet/highlights.lua       UI, syntax, Tree-sitter, and LSP
-lua/soviet/integrations.lua     Optional plugin highlight groups
+lua/soviet/colors.lua           Derived semantic colors
+lua/soviet/groups/              Core and plugin highlight groups
+lua/soviet/util.lua             Color blending and highlight cache
 lua/soviet/lualine.lua          Lualine palette builder
 lua/lualine/themes/soviet.lua   Lualine theme for the active variant
 lua/lualine/themes/soviet-*.lua  Fixed lualine variants
 doc/soviet.txt                  :help soviet
 ```
 
-The plugin has no timers, autocommands, OS preference readers, or file cache. It updates highlight groups, `colors_name`, color options, and optionally `terminal_color_0` through `terminal_color_15`.
+The plugin has no timers, autocommands, or OS preference readers. It updates highlight groups, `colors_name`, color options, and optionally `terminal_color_0` through `terminal_color_15`. The generated highlight table is cached by variant by default; set `cache = false` to disable this.
 
 ## License
 

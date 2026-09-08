@@ -1,0 +1,6 @@
+soviet.nvim
+Copyright 2026 Anton Reznikov
+
+Portions of the plugin-integration architecture and highlight definitions are
+adapted from tokyonight.nvim, Copyright 2021 Folke Lemaitre, licensed under the
+Apache License, Version 2.0.

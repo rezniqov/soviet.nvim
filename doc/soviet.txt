@@ -25,19 +25,17 @@ Optional configuration must run before applying the colorscheme:
         functions = {},
         strings = {},
         variables = {},
+        sidebars = "dark",
+        floats = "dark",
+      },
+      dim_inactive = false,
+      lualine_bold = false,
+      cache = true,
+      plugins = {
+        all = package.loaded.lazy == nil,
+        auto = true,
       },
       palette = {},
-      integrations = {
-        telescope = true,
-        gitsigns = true,
-        completion = true,
-        trees = true,
-        which_key = true,
-        indent_blankline = true,
-        lazy = true,
-        mini = true,
-        snacks = true,
-      },
     })
     vim.cmd.colorscheme("soviet-dark")
 <
@@ -49,22 +47,29 @@ options. Choose the variant by name: soviet-dark or soviet-light. There is no
 style option or OS synchronization. Replace old :colorscheme soviet calls
 with one of the two variant names.
 
-transparent         Removes editor and sidebar backgrounds. Floats, menus,
-                    selections and statuslines retain their backgrounds.
+transparent         Removes the main editor background.
 terminal_colors     Sets terminal_color_0 through terminal_color_15. False
                     leaves existing terminal globals untouched.
                     Existing terminal buffers may retain old ANSI colors;
                     recreate those buffers after an appearance change.
 styles              Highlight attributes for comments, keywords, functions,
-                    strings and variables. Use italic = false to disable
-                    default comment italics.
+                    strings and variables. sidebars and floats accept "dark",
+                    "normal", or "transparent".
+dim_inactive        Uses a darker background for inactive windows.
+lualine_bold        Makes lualine mode sections bold.
+cache               Caches the generated highlight table by variant.
+plugins             Plugin integration discovery. auto reads lazy.nvim's
+                    registry; all enables every integration. Individual
+                    groups or plugin names accept true, false, or
+                    { enabled = boolean }.
 palette             Override palette keys with #RRGGBB strings. See README
                     or lua/soviet/palette.lua for all keys. Overrides apply
-                    to both variants; on_highlights receives the chosen one.
-integrations        Disable individual integrations with false. completion
-                    covers cmp and blink; trees covers nvim-tree, neo-tree
-                    and oil. No plugin is loaded by the theme.
-on_highlights       Optional function(highlights, palette), called before
+                    to both variants.
+integrations        Legacy aliases retained for backwards compatibility.
+                    New configurations should use plugins.
+on_colors           Optional function(colors), called after semantic colors
+                    are derived from the selected palette.
+on_highlights       Optional function(highlights, colors), called before
                     applying highlights. Mutate the supplied table:
 >
     require("soviet").setup({
@@ -75,6 +80,20 @@ on_highlights       Optional function(highlights, palette), called before
 <
 Replace linked groups with a new table; a link overrides other attributes.
 See |nvim_set_hl()| for available highlight attributes.
+
+LAZYVIM                                                       *soviet-lazyvim*
+
+Soviet automatically enables dedicated groups for plugins registered with
+lazy.nvim. In LazyVim, install the theme at priority 1000 and set:
+>
+    {
+      "LazyVim/LazyVim",
+      opts = { colorscheme = "soviet-dark" },
+    }
+<
+No extra integration list is required. This includes LazyVim defaults such as
+Blink, Bufferline, Flash, fzf-lua, Gitsigns, GrugFar, Noice, render-markdown,
+Snacks, Trouble and WhichKey.
 
 PALETTE                                                        *soviet-palette*
 >

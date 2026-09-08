@@ -2,12 +2,13 @@ local M = {}
 
 ---@param style? "dark"|"light"
 function M.get(style)
-  local c = require("soviet").get_palette(style)
+  style = style or (vim.g.colors_name == "soviet-light" and "light" or "dark")
+  local c, opts = require("soviet.colors").setup({ style = style })
   local function mode(accent)
     return {
-      a = { fg = c.bg_dark, bg = accent, gui = "bold" },
-      b = { fg = c.fg, bg = c.bg_light },
-      c = { fg = c.muted, bg = c.bg_dark },
+      a = { fg = c.bg_dark, bg = accent, gui = opts.lualine_bold and "bold" or nil },
+      b = { fg = c.fg, bg = c.bg_highlight },
+      c = { fg = c.muted, bg = c.bg_statusline },
     }
   end
   return {
@@ -18,9 +19,9 @@ function M.get(style)
     command = mode(c.ochre),
     terminal = mode(c.blue),
     inactive = {
-      a = { fg = c.muted, bg = c.bg_dark },
-      b = { fg = c.muted, bg = c.bg_dark },
-      c = { fg = c.muted, bg = c.bg_dark },
+      a = { fg = c.muted, bg = c.bg_statusline },
+      b = { fg = c.muted, bg = c.bg_statusline },
+      c = { fg = c.muted, bg = c.bg_statusline },
     },
   }
 end
