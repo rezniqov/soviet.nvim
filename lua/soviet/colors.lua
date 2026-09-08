@@ -64,7 +64,7 @@ function M.setup(opts)
   c.bg_search = c.brass
   c.fg_sidebar = c.fg
   c.fg_float = c.fg
-  c.border_highlight = c.brass
+  c.border_highlight = c.burgundy
 
   c.error = c.red_bright
   c.warning = c.ochre

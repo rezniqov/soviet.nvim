@@ -45,7 +45,7 @@ function M.get(c, opts)
     NormalNC                    = { fg = c.fg, bg = opts.transparent and c.none or opts.dim_inactive and c.bg_dark or c.bg }, -- normal text in non-current windows
     NormalSB                    = { fg = c.fg_sidebar, bg = c.bg_sidebar }, -- normal text in sidebar
     NormalFloat                 = { fg = c.fg_float, bg = c.bg_float }, -- Normal text in floating windows.
-    FloatBorder                 = { fg = c.border_active, bg = c.bg_float },
+    FloatBorder                 = { fg = c.burgundy, bg = c.bg_float },
     FloatTitle                  = { fg = c.border_highlight, bg = c.bg_float },
     FloatFooter                 = { fg = c.muted, bg = c.bg_float },
     Pmenu                       = { bg = c.bg_popup, fg = c.fg }, -- Popup menu: normal item.

@@ -77,8 +77,7 @@ local function validate(options)
     end
   end
   for key, enabled in pairs(options.plugins) do
-    local valid = type(enabled) == "boolean"
-      or (type(enabled) == "table" and type(enabled.enabled) == "boolean")
+    local valid = type(enabled) == "boolean" or (type(enabled) == "table" and type(enabled.enabled) == "boolean")
     if not valid then
       error("soviet: plugins." .. key .. " must be a boolean or { enabled = boolean }")
     end

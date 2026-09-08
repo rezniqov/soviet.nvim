@@ -9,10 +9,10 @@ function M.get(c)
   local ret = {
     NoiceCmdlineIconInput          = { fg = c.yellow },
     NoiceCmdlineIconLua            = { fg = c.blue1 },
-    NoiceCmdlinePopupBorderInput   = { fg = c.yellow },
-    NoiceCmdlinePopupBorderLua     = { fg = c.blue1 },
-    NoiceCmdlinePopupTitleInput    = { fg = c.yellow },
-    NoiceCmdlinePopupTitleLua      = { fg = c.blue1 },
+    NoiceCmdlinePopupBorderInput   = { fg = c.border_active },
+    NoiceCmdlinePopupBorderLua     = { fg = c.border_active },
+    NoiceCmdlinePopupTitleInput    = { fg = c.border_active },
+    NoiceCmdlinePopupTitleLua      = { fg = c.border_active },
     NoiceCompletionItemKindDefault = { fg = c.fg_dark, bg = c.none },
   }
   require("soviet.groups.kinds").kinds(ret, "NoiceCompletionItemKind%s")

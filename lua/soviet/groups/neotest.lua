@@ -8,7 +8,7 @@ function M.get(c)
   -- stylua: ignore
   return {
     NeotestAdapterName  = { fg = c.purple, bold = true },
-    NeotestBorder       = { fg = c.blue },
+    NeotestBorder       = { fg = c.border_highlight },
     NeotestDir          = { fg = c.enamel_blue },
     NeotestExpandMarker = { fg = c.fg_sidebar },
     NeotestFailed       = { fg = c.red },
