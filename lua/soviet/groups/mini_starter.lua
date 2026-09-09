@@ -7,15 +7,15 @@ M.url = "https://github.com/echasnovski/mini.starter"
 function M.get(c, opts)
   -- stylua: ignore
   return {
-    MiniStarterCurrent    = { nocombine = true },
-    MiniStarterFooter     = { fg = c.yellow, italic = true },
-    MiniStarterHeader     = { fg = c.blue },
-    MiniStarterInactive   = { fg = c.comment, style = opts.styles.comments },
+    MiniStarterCurrent    = { bg = c.bg_visual, bold = true, nocombine = true },
+    MiniStarterFooter     = { fg = c.olive },
+    MiniStarterHeader     = { fg = c.red, bold = true },
+    MiniStarterInactive   = { fg = c.comment },
     MiniStarterItem       = { fg = c.fg, bg = opts.transparent and c.none or c.bg },
-    MiniStarterItemBullet = { fg = c.border_highlight },
-    MiniStarterItemPrefix = { fg = c.warning },
-    MiniStarterQuery      = { fg = c.info },
-    MiniStarterSection    = { fg = c.blue1 },
+    MiniStarterItemBullet = { fg = c.burgundy },
+    MiniStarterItemPrefix = { fg = c.brass, bold = true },
+    MiniStarterQuery      = { fg = c.enamel_blue },
+    MiniStarterSection    = { fg = c.burgundy, bold = true },
   }
 end
 

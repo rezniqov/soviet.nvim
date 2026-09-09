@@ -17,7 +17,7 @@ function M.get(c, opts)
     CursorIM                    = { fg = c.bg, bg = c.fg }, -- like Cursor, but used when in IME mode |CursorIM|
     CursorColumn                = { bg = c.bg_highlight }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
     CursorLine                  = { bg = c.bg_highlight }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
-    Directory                   = { fg = c.enamel_blue }, -- directory names (and other special names in listings)
+    Directory                   = { fg = c.enamel_blue, bold = true }, -- directory names (and other special names in listings)
     DiffAdd                     = { bg = c.diff.add }, -- diff mode: Added line |diff.txt|
     DiffChange                  = { bg = c.diff.change }, -- diff mode: Changed line |diff.txt|
     DiffDelete                  = { bg = c.diff.delete }, -- diff mode: Deleted line |diff.txt|
@@ -46,12 +46,12 @@ function M.get(c, opts)
     NormalSB                    = { fg = c.fg_sidebar, bg = c.bg_sidebar }, -- normal text in sidebar
     NormalFloat                 = { fg = c.fg_float, bg = c.bg_float }, -- Normal text in floating windows.
     FloatBorder                 = { fg = c.burgundy, bg = c.bg_float },
-    FloatTitle                  = { fg = c.border_highlight, bg = c.bg_float },
+    FloatTitle                  = { fg = c.border_highlight, bg = c.bg_float, bold = true },
     FloatFooter                 = { fg = c.muted, bg = c.bg_float },
     Pmenu                       = { bg = c.bg_popup, fg = c.fg }, -- Popup menu: normal item.
-    PmenuMatch                  = { bg = c.bg_popup, fg = c.blue1 }, -- Popup menu: Matched text in normal item.
+    PmenuMatch                  = { bg = c.bg_popup, fg = c.blue1, bold = true }, -- Popup menu: Matched text in normal item.
     PmenuSel                    = { bg = Util.blend_bg(c.fg_gutter, 0.8) }, -- Popup menu: selected item.
-    PmenuMatchSel               = { bg = Util.blend_bg(c.fg_gutter, 0.8), fg = c.blue1 }, -- Popup menu: Matched text in selected item.
+    PmenuMatchSel               = { bg = Util.blend_bg(c.fg_gutter, 0.8), fg = c.blue1, bold = true }, -- Popup menu: Matched text in selected item.
     PmenuSbar                   = { bg = Util.blend_fg(c.bg_popup, 0.95) }, -- Popup menu: scrollbar.
     PmenuThumb                  = { bg = c.fg_gutter }, -- Popup menu: Thumb of the scrollbar.
     PmenuKind                   = "Pmenu",
@@ -97,21 +97,25 @@ function M.get(c, opts)
     Function                    = { fg = c.brass, style = opts.styles.functions }, -- function name (also: methods for classes)
     Identifier                  = { fg = c.fg, style = opts.styles.variables }, -- (preferred) any variable name
     Italic                      = { italic = true, fg = c.fg }, -- (preferred) any italic text
-    Keyword                     = { fg = c.burgundy, style = opts.styles.keywords }, --  any other keyword
+    Keyword                     = { fg = c.burgundy, bold = true, style = opts.styles.keywords }, --  any other keyword
     Operator                    = { fg = c.muted }, -- "sizeof", "+", "*", etc.
     PreProc                     = { fg = c.steel }, -- (preferred) generic Preprocessor
     Special                     = { fg = c.brass }, -- (preferred) any special symbol
-    Statement                   = { fg = c.burgundy }, -- (preferred) any statement
+    Statement                   = { fg = c.burgundy, bold = true, style = opts.styles.keywords }, -- (preferred) any statement
     String                      = { fg = c.string, style = opts.styles.strings }, --   a string constant: "this is a string"
-    Todo                        = { bg = c.yellow, fg = c.bg }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
-    Type                        = { fg = c.enamel_blue }, -- (preferred) int, long, char, etc.
+    Todo                        = { bg = c.yellow, fg = c.bg, bold = true }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+    Type                        = { fg = c.enamel_blue, bold = true }, -- (preferred) int, long, char, etc.
     Underlined                  = { underline = true }, -- (preferred) text that stands out, HTML links
     debugBreakpoint             = { bg = Util.blend_bg(c.info, 0.1), fg = c.info }, -- used for breakpoint colors in terminal-debug
     debugPC                     = { bg = c.bg_sidebar }, -- used for highlighting the current line in terminal-debug
     dosIniLabel                 = "@property",
     helpCommand                 = { bg = c.terminal_black, fg = c.blue },
-    htmlH1                      = { fg = c.magenta, bold = true },
-    htmlH2                      = { fg = c.blue, bold = true },
+    htmlH1                      = { fg = c.red, bold = true },
+    htmlH2                      = { fg = c.burgundy, bold = true },
+    htmlH3                      = { fg = c.brass, bold = true },
+    htmlH4                      = { fg = c.enamel_blue, bold = true },
+    htmlH5                      = { fg = c.olive, bold = true },
+    htmlH6                      = { fg = c.muted, bold = true },
     qfFileName                  = { fg = c.enamel_blue },
     qfLineNr                    = { fg = c.dark5 },
 

@@ -34,14 +34,14 @@ function M.get(c, opts)
     ["@function.macro"]             = "Macro",
     ["@function.method"]            = "Function",
     ["@function.method.call"]       = "@function.method",
-    ["@keyword"]                    = { fg = c.purple, style = opts.styles.keywords }, -- For keywords that don't fall in previous categories.
+    ["@keyword"]                    = { fg = c.purple, bold = true, style = opts.styles.keywords }, -- For keywords that don't fall in previous categories.
     ["@keyword.conditional"]        = "Conditional",
     ["@keyword.coroutine"]          = "@keyword",
     ["@keyword.debug"]              = "Debug",
     ["@keyword.directive"]          = "PreProc",
     ["@keyword.directive.define"]   = "Define",
     ["@keyword.exception"]          = "Exception",
-    ["@keyword.function"]           = { fg = c.magenta, style = opts.styles.functions }, -- For keywords used to define a function.
+    ["@keyword.function"]           = { fg = c.magenta, bold = true, style = opts.styles.keywords }, -- For keywords used to define a function.
     ["@keyword.import"]             = "Include",
     ["@keyword.operator"]           = "@operator",
     ["@keyword.repeat"]             = "Repeat",
@@ -91,7 +91,7 @@ function M.get(c, opts)
     ["@tag.tsx"]                    = { fg = c.blue },
     ["@tag.javascript"]             = { fg = c.blue },
     ["@type"]                       = "Type",
-    ["@type.builtin"]               = { fg = Util.blend_bg(c.enamel_blue, 0.8) },
+    ["@type.builtin"]               = { fg = Util.blend_bg(c.enamel_blue, 0.8), bold = true },
     ["@type.definition"]            = "Typedef",
     ["@type.qualifier"]             = "@keyword",
     ["@variable"]                   = { fg = c.fg, style = opts.styles.variables }, -- Any variable name that does not have another highlight.

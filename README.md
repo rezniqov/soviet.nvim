@@ -121,7 +121,7 @@ require("soviet").setup({
     floats = "dark", -- "dark", "normal", or "transparent"
   },
   dim_inactive = false,
-  lualine_bold = false,
+  lualine_bold = true,
   cache = true,
   plugins = {
     all = package.loaded.lazy == nil,

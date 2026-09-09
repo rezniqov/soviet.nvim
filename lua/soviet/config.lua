@@ -29,7 +29,7 @@ M.defaults = {
     floats = "dark",
   },
   dim_inactive = false,
-  lualine_bold = false,
+  lualine_bold = true,
   cache = true,
   plugins = {
     -- Outside lazy.nvim all integrations are defined eagerly. With lazy.nvim,

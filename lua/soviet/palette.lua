@@ -30,10 +30,11 @@ function M.get(overrides, style)
       brown = "#74523F",
       brass = "#74541C",
       ochre = "#864A20",
-      steel = "#4D5C61",
-      blue = "#385C80",
-      teal = "#2C6164",
-      string = "#34624F",
+      -- Dense printing inks: industrial steel, enamel blue, and turquoise.
+      steel = "#405B62",
+      blue = "#235C89",
+      teal = "#176466",
+      string = "#2B674D",
       property = "#685448",
     }, overrides or {})
   end
@@ -64,11 +65,11 @@ function M.get(overrides, style)
     brown = "#B28A75",
     brass = "#D1B078",
     ochre = "#D29A69",
-    steel = "#9BA9AC",
-    -- Enamel-sign blue and turquoise balance the warm printing inks.
-    blue = "#91ABC4",
-    teal = "#81B4B0",
-    string = "#9BC1B2",
+    -- Clear enamel and industrial inks instead of powdery pastels.
+    steel = "#7899A0",
+    blue = "#5F9DD0",
+    teal = "#45A39E",
+    string = "#65AA88",
     property = "#C6B8AA",
   }, overrides or {})
 end
