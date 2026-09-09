@@ -8,11 +8,11 @@ function M.get(c, opts)
   -- stylua: ignore
   return {
     -- General
-    DashboardHeader           = { fg = c.red, bold = true },
+    DashboardHeader           = { fg = c.accent, bold = true },
     DashboardFooter           = { fg = c.olive },
     -- Hyper theme
     DashboardProjectTitle     = { fg = c.burgundy, bold = true },
-    DashboardProjectTitleIcon = { fg = c.red },
+    DashboardProjectTitleIcon = { fg = c.burgundy },
     DashboardProjectIcon      = { fg = c.enamel_blue },
     DashboardMruTitle         = { fg = c.burgundy, bold = true },
     DashboardMruIcon          = { fg = c.brass },

@@ -8,7 +8,7 @@ function M.get(c, opts)
   -- stylua: ignore
   return {
     IndentLine                 = { fg = c.fg_gutter, nocombine = true },
-    IndentLineCurrent          = { fg = c.blue1, nocombine = true },
+    IndentLineCurrent          = { fg = c.map_contour, nocombine = true },
   }
 end
 

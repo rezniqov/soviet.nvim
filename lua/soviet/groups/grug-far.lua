@@ -15,7 +15,7 @@ function M.get(c, opts)
     GrugFarResultsHeader          = { fg = c.orange },
     GrugFarResultsLineColumn      = { fg = c.dark3 },
     GrugFarResultsLineNo          = { fg = c.dark3 },
-    GrugFarResultsMatch           = { fg = c.black, bg = c.red },
+    GrugFarResultsMatch           = { fg = c.bg_dark, bg = c.brass },
     GrugFarResultsStats           = { fg = c.blue },
   }
 end

@@ -32,7 +32,7 @@ function M.get(c, opts)
     -- Dashboard
     SnacksDashboardDesc       = { fg = c.olive },
     SnacksDashboardFooter     = { fg = c.olive },
-    SnacksDashboardHeader     = { fg = c.red, bold = true },
+    SnacksDashboardHeader     = { fg = c.accent, bold = true },
     SnacksDashboardIcon       = { fg = c.enamel_blue },
     SnacksDashboardKey        = { fg = c.brass, bold = true },
     SnacksDashboardSpecial    = { fg = c.burgundy },
@@ -45,7 +45,7 @@ function M.get(c, opts)
     SnacksProfilerIconTrace   = { bg = Util.blend_bg(c.blue7, 0.3), fg = c.dark3 },
     SnacksProfilerBadgeTrace  = { bg = Util.blend_bg(c.blue7, 0.1), fg = c.dark3 },
     SnacksIndent              = { fg = c.fg_gutter, nocombine = true },
-    SnacksIndentScope         = { fg = c.blue1, nocombine = true },
+    SnacksIndentScope         = { fg = c.map_contour, nocombine = true },
     SnacksZenIcon             = { fg = c.purple },
     SnacksInputIcon           = { fg = c.blue1 },
     SnacksInputBorder         = { fg = c.border_active },
@@ -62,8 +62,8 @@ function M.get(c, opts)
     SnacksDiffLabel           = { fg = c.blue1, bold = true },
     SnacksGhDiffHeader        = { bg = Util.blend_bg(c.blue1, 0.1), fg = c.blue1 }
   }
-  for i, color in ipairs(c.rainbow) do
-    ret["SnacksIndent" .. i] = { fg = color, nocombine = true }
+  for i = 1, #c.rainbow do
+    ret["SnacksIndent" .. i] = { fg = c.map_grid, nocombine = true }
   end
   return ret
 end

@@ -32,7 +32,7 @@ function M.get(overrides, style)
       ochre = "#864A20",
       -- Dense printing inks: industrial steel, enamel blue, and turquoise.
       steel = "#405B62",
-      blue = "#235C89",
+      blue = "#36739C",
       teal = "#176466",
       string = "#2B674D",
       property = "#685448",
@@ -67,7 +67,7 @@ function M.get(overrides, style)
     ochre = "#D29A69",
     -- Clear enamel and industrial inks instead of powdery pastels.
     steel = "#7899A0",
-    blue = "#5F9DD0",
+    blue = "#5B93BC",
     teal = "#45A39E",
     string = "#65AA88",
     property = "#C6B8AA",

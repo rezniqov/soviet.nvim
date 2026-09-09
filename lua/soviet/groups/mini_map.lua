@@ -8,9 +8,9 @@ function M.get(c)
   -- stylua: ignore
   return {
     MiniMapNormal      = "NormalFloat",
-    MiniMapSymbolCount = "Special",
-    MiniMapSymbolLine  = "Title",
-    MiniMapSymbolView  = "Delimiter",
+    MiniMapSymbolCount = { fg = c.map_grid },
+    MiniMapSymbolLine  = { fg = c.map_contour },
+    MiniMapSymbolView  = { fg = c.map_label },
   }
 end
 

@@ -15,7 +15,7 @@ function M.get(c)
     MiniStatuslineModeInsert  = { fg = c.black, bg = c.green, bold = true },
     MiniStatuslineModeNormal  = { fg = c.black, bg = c.blue, bold = true },
     MiniStatuslineModeOther   = { fg = c.black, bg = c.teal, bold = true },
-    MiniStatuslineModeReplace = { fg = c.black, bg = c.red, bold = true },
+    MiniStatuslineModeReplace = { fg = c.black, bg = c.red_bright, bold = true },
     MiniStatuslineModeVisual  = { fg = c.black, bg = c.magenta, bold = true },
   }
 end

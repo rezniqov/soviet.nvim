@@ -10,7 +10,7 @@ function M.get(c, opts)
     Foo                         = { bg = c.magenta2, fg = c.fg },
 
     Comment                     = { fg = c.comment, style = opts.styles.comments }, -- any comment
-    ColorColumn                 = { bg = c.black }, -- used for the columns set with 'colorcolumn'
+    ColorColumn                 = { bg = c.map_surface }, -- used for the columns set with 'colorcolumn'
     Conceal                     = { fg = c.dark5 }, -- placeholder characters substituted for concealed text (see 'conceallevel')
     Cursor                      = { fg = c.bg, bg = c.fg }, -- character under the cursor
     lCursor                     = { fg = c.bg, bg = c.fg }, -- the character under the cursor when |language-mapping| is used (see 'guicursor')
@@ -26,13 +26,13 @@ function M.get(c, opts)
     ErrorMsg                    = { fg = c.error }, -- error messages on the command line
     VertSplit                   = { fg = c.border }, -- the column separating vertically split windows
     WinSeparator                = { fg = c.border, bold = true }, -- the column separating vertically split windows
-    Folded                      = { fg = c.olive, bg = c.fg_gutter }, -- line used for closed folds
+    Folded                      = { fg = c.map_contour, bg = c.map_surface }, -- line used for closed folds
     FoldColumn                  = { bg = opts.transparent and c.none or c.bg, fg = c.comment }, -- 'foldcolumn'
     SignColumn                  = { bg = opts.transparent and c.none or c.bg, fg = c.fg_gutter }, -- column where |signs| are displayed
     SignColumnSB                = { bg = c.bg_sidebar, fg = c.fg_gutter }, -- column where |signs| are displayed
-    Substitute                  = { bg = c.red, fg = c.black }, -- |:substitute| replacement text highlighting
+    Substitute                  = { bg = c.red_dark, fg = c.fg_bright }, -- |:substitute| replacement text highlighting
     LineNr                      = { fg = c.fg_gutter }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-    CursorLineNr                = { fg = c.orange, bold = true }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+    CursorLineNr                = { fg = c.map_contour, bold = true }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     LineNrAbove                 = { fg = c.fg_gutter },
     LineNrBelow                 = { fg = c.fg_gutter },
     -- Snacks maps MatchParen to LazyGit's active border.
@@ -40,7 +40,7 @@ function M.get(c, opts)
     ModeMsg                     = { fg = c.fg_dark, bold = true }, -- 'showmode' message (e.g., "-- INSERT -- ")
     MsgArea                     = { fg = c.fg_dark }, -- Area for messages and cmdline
     MoreMsg                     = { fg = c.olive }, -- |more-prompt|
-    NonText                     = { fg = c.dark3 }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    NonText                     = { fg = c.map_grid }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     Normal                      = { fg = c.fg, bg = opts.transparent and c.none or c.bg }, -- normal text
     NormalNC                    = { fg = c.fg, bg = opts.transparent and c.none or opts.dim_inactive and c.bg_dark or c.bg }, -- normal text in non-current windows
     NormalSB                    = { fg = c.fg_sidebar, bg = c.bg_sidebar }, -- normal text in sidebar
@@ -63,7 +63,7 @@ function M.get(c, opts)
     Search                      = { bg = c.bg_search, fg = c.bg_dark }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
     IncSearch                   = { bg = c.orange, fg = c.black }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     CurSearch                   =  "IncSearch",
-    SpecialKey                  = { fg = c.dark3 }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
+    SpecialKey                  = { fg = c.map_grid }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
     SpellBad                    = { sp = c.error, undercurl = true }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
     SpellCap                    = { sp = c.warning, undercurl = true }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
     SpellLocal                  = { sp = c.info, undercurl = true }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
@@ -73,7 +73,7 @@ function M.get(c, opts)
     TabLine                     = { bg = c.bg_statusline, fg = c.fg_gutter }, -- tab pages line, not active tab page label
     TabLineFill                 = { bg = opts.transparent and c.none or c.black }, -- tab pages line, where there are no labels
     TabLineSel                  = { fg = c.black, bg = c.blue }, -- tab pages line, active tab page label
-    Title                       = { fg = c.red, bold = true }, -- titles for output from ":set all", ":autocmd" etc.
+    Title                       = { fg = c.accent, bold = true }, -- titles for output from ":set all", ":autocmd" etc.
     Visual                      = { bg = c.bg_visual }, -- Visual mode selection
     VisualNOS                   = { bg = c.bg_visual }, -- Visual mode selection when vim is "Not Owning the Selection".
     WarningMsg                  = { fg = c.warning }, -- warning messages
@@ -110,14 +110,14 @@ function M.get(c, opts)
     debugPC                     = { bg = c.bg_sidebar }, -- used for highlighting the current line in terminal-debug
     dosIniLabel                 = "@property",
     helpCommand                 = { bg = c.terminal_black, fg = c.blue },
-    htmlH1                      = { fg = c.red, bold = true },
+    htmlH1                      = { fg = c.accent, bold = true },
     htmlH2                      = { fg = c.burgundy, bold = true },
     htmlH3                      = { fg = c.brass, bold = true },
     htmlH4                      = { fg = c.enamel_blue, bold = true },
     htmlH5                      = { fg = c.olive, bold = true },
     htmlH6                      = { fg = c.muted, bold = true },
     qfFileName                  = { fg = c.enamel_blue },
-    qfLineNr                    = { fg = c.dark5 },
+    qfLineNr                    = { fg = c.map_label },
 
     -- These groups are for the native LSP client. Some other LSP clients may
     -- use these groups, or use their own.
@@ -127,7 +127,7 @@ function M.get(c, opts)
     LspSignatureActiveParameter = { bg = Util.blend_bg(c.bg_visual, 0.4), bold = true },
     LspCodeLens                 = { fg = c.comment },
     LspCodeLensSeparator        = { fg = c.border },
-    LspInlayHint                = { bg = Util.blend_bg(c.blue7, 0.1), fg = c.dark3 },
+    LspInlayHint                = { bg = c.map_surface, fg = c.map_label },
     LspInfoBorder               = { fg = c.border_highlight, bg = c.bg_float },
     ComplHint                   = { fg = c.terminal_black },
     SnippetTabstop              = { bg = c.bg_visual },

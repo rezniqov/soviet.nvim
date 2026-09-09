@@ -12,7 +12,7 @@ function M.get(c, opts)
     RenderMarkdownBullet    = {fg = c.orange}, -- horizontal rule
     RenderMarkdownCode      = { bg = c.bg_dark },
     RenderMarkdownDash      = {fg = c.orange}, -- horizontal rule
-    RenderMarkdownTableHead = { fg = c.red, bold = true },
+    RenderMarkdownTableHead = { fg = c.burgundy, bold = true },
     RenderMarkdownTableRow  = { fg = c.orange},
     RenderMarkdownCodeInline = "@markup.raw.markdown_inline"
   }

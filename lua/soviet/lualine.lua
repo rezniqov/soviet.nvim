@@ -13,7 +13,7 @@ function M.get(style)
     }
   end
   return {
-    normal = mode(c.red),
+    normal = mode(c.accent),
     insert = mode(c.enamel_blue),
     visual = mode(c.burgundy),
     replace = mode(c.red_bright),

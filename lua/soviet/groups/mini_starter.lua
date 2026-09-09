@@ -9,7 +9,7 @@ function M.get(c, opts)
   return {
     MiniStarterCurrent    = { bg = c.bg_visual, bold = true, nocombine = true },
     MiniStarterFooter     = { fg = c.olive },
-    MiniStarterHeader     = { fg = c.red, bold = true },
+    MiniStarterHeader     = { fg = c.accent, bold = true },
     MiniStarterInactive   = { fg = c.comment },
     MiniStarterItem       = { fg = c.fg, bg = opts.transparent and c.none or c.bg },
     MiniStarterItemBullet = { fg = c.burgundy },

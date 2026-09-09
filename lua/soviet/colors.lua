@@ -10,12 +10,21 @@ function M.setup(opts)
   Util.fg = c.fg
 
   c.none = "NONE"
+  -- Reserve the clean printing red for a small number of primary accents.
+  c.accent = c.red
   c.black = Util.blend_bg(c.bg, 0.8, "#000000")
   c.terminal_black = c.border
   c.dark3 = c.border
   c.dark5 = c.muted
   c.fg_dark = c.muted
-  c.fg_gutter = c.border
+
+  -- A subdued cartographic layer for grids, contours, and coordinate labels.
+  -- It stays behind syntax and primary interface accents in both variants.
+  c.map_surface = Util.blend_bg(c.olive, opts.style == "light" and 0.10 or 0.08)
+  c.map_grid = Util.blend_bg(c.olive, opts.style == "light" and 0.48 or 0.28)
+  c.map_contour = Util.blend_bg(c.khaki, opts.style == "light" and 0.80 or 0.68)
+  c.map_label = Util.blend_bg(c.steel, opts.style == "light" and 0.90 or 0.80)
+  c.fg_gutter = c.map_grid
 
   -- Tokyonight integrations use several blue slots as general-purpose
   -- accents. Spread those roles across warmer Soviet printing inks and keep
@@ -41,12 +50,12 @@ function M.setup(opts)
   c.git = {
     add = c.added,
     change = c.ochre,
-    delete = c.red,
+    delete = c.red_dark,
     ignore = c.muted,
   }
   c.diff = {
     add = Util.blend_bg(c.added, 0.18),
-    delete = Util.blend_bg(c.red, 0.18),
+    delete = Util.blend_bg(c.red_dark, 0.18),
     change = Util.blend_bg(c.ochre, 0.14),
     text = Util.blend_bg(c.brass, 0.28),
   }
@@ -71,7 +80,7 @@ function M.setup(opts)
   c.info = c.enamel_blue
   c.hint = c.olive
   c.todo = c.brass
-  c.rainbow = { c.red, c.ochre, c.brass, c.added, c.teal, c.enamel_blue, c.burgundy, c.khaki }
+  c.rainbow = { c.accent, c.ochre, c.brass, c.added, c.teal, c.enamel_blue, c.burgundy, c.khaki }
 
   c.terminal = {
     black = opts.style == "light" and c.fg_bright or c.bg_dark,

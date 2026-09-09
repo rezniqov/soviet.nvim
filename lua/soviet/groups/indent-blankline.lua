@@ -8,9 +8,9 @@ function M.get(c, opts)
   -- stylua: ignore
   return {
     IndentBlanklineChar        = { fg = c.fg_gutter, nocombine = true },
-    IndentBlanklineContextChar = { fg = c.blue1, nocombine = true },
+    IndentBlanklineContextChar = { fg = c.map_contour, nocombine = true },
     IblIndent                  = { fg = c.fg_gutter, nocombine = true },
-    IblScope                   = { fg = c.blue1, nocombine = true },
+    IblScope                   = { fg = c.map_contour, nocombine = true },
   }
 end
 
