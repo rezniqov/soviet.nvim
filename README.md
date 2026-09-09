@@ -1,13 +1,13 @@
 # ★ soviet.nvim
 
-![soviet.nvim — dark constructivist poster with cream typography, a hammer and sickle, and a red star](assets/soviet-historical-poster.png)
+![soviet.nvim poster with Sputnik, Moscow architecture, a metro mosaic, a tea glass, and geometric print textures](assets/soviet-nostalgia-poster.png)
 
-Light and dark Neovim colorschemes inspired by Soviet visual culture: book covers, posters, enamel signs, design bureaus, and military colors.
+Light and dark Neovim colorschemes inspired by Soviet visual culture: book covers, editorial posters, enamel signs, technical diagrams, metro mosaics, and cartographic graphics.
 
-Warm graphite and book paper form the foundation. Burgundy, ochre, blue, and turquoise distinguish syntax, while olive and khaki provide secondary accents. Poster red marks headings, search, and errors. This is an interpretation for the screen, not a reconstruction of historical printing inks.
+Warm graphite and newspaper paper form the foundation. Printing red is reserved for primary accents, while burgundy, brass, ochre, enamel blue, and turquoise organize syntax and interface states. Olive, khaki, and steel form a quiet cartographic layer behind the code. This is an interpretation for the screen, not a reconstruction of historical printing inks.
 
-- **soviet-dark** — warm graphite with soft contrast and lighter ink colors.
-- **soviet-light** — cream paper with darker ink colors.
+- **soviet-dark** — layered warm graphite with clear, restrained contrast.
+- **soviet-light** — aged newspaper paper with darker printing inks.
 
 ## Screenshots
 
@@ -160,11 +160,11 @@ require("soviet").setup({
   styles = { comments = { italic = false } },
   palette = { property = "#C8C1AA" },
   on_colors = function(c)
-    c.border_highlight = c.red
+    c.border_highlight = c.brass
   end,
   on_highlights = function(hl, c)
     hl.CursorLineNr = { fg = c.brass, bold = false }
-    hl["@keyword.return"] = { fg = c.red_bright }
+    hl["@keyword.return"] = { fg = c.burgundy, bold = true }
     hl.TelescopeBorder = { fg = c.brass, bg = c.bg_light }
   end,
 })
@@ -187,36 +187,36 @@ Without an argument, this returns the active variant, or dark before either colo
 
 ## 🎨 Palette
 
-| Role                                             | Dark      | Light     |
-| ------------------------------------------------ | --------- | --------- |
-| Editor background                                | `#292727` | `#F0E7D8` |
-| Sidebar / statusline                             | `#222020` | `#E3D9C9` |
-| Floating windows                                 | `#323030` | `#F6EEDF` |
-| Cursor line                                      | `#393535` | `#E7DDCD` |
-| Selection                                        | `#494249` | `#D7CCD0` |
-| Border                                           | `#625858` | `#AEA094` |
-| Text                                             | `#D8CFC4` | `#413C38` |
-| Bright text                                      | `#E9DFD0` | `#292626` |
-| Comments                                         | `#92917B` | `#77765D` |
-| Keywords / booleans — burgundy                   | `#C58F9D` | `#8A465C` |
-| Functions / current line number / search — brass | `#D1B078` | `#856020` |
-| Strings / characters — green ink                 | `#9BC1B2` | `#3D735C` |
-| Editor questions — khaki                         | `#B1A178` | `#78663D` |
-| Numbers / warnings — ochre                       | `#D29A69` | `#985424` |
-| Types / classes / information — enamel blue      | `#91ABC4` | `#3D648B` |
-| Preprocessor — steel                             | `#9BA9AC` | `#5C6D74` |
-| Operators / secondary text                       | `#ABA09A` | `#766A62` |
-| Properties                                       | `#C6B8AA` | `#685448` |
-| Builtins — turquoise                             | `#81B4B0` | `#326D70` |
-| Hints — olive                                    | `#979B72` | `#6B7048` |
-| Added lines / ANSI green                         | `#B8BA73` | `#536B32` |
-| ANSI bright green                                | `#CED08B` | `#426020` |
-| Headings / removed lines / active search — red   | `#D45C4F` | `#AB3E33` |
-| Errors                                           | `#EF7565` | `#B93228` |
-| Dark red                                         | `#88413C` | `#843C35` |
-| Brown                                            | `#A17F6C` | `#89604A` |
+| Role                                            | Dark      | Light     |
+| ----------------------------------------------- | --------- | --------- |
+| Editor background                               | `#292727` | `#DDD0B8` |
+| Sidebar / statusline                            | `#1F1D1D` | `#C9B99F` |
+| Elevated surface                                | `#353232` | `#EBDFC9` |
+| Cursor line                                     | `#403A3A` | `#C3B197` |
+| Selection                                       | `#554B54` | `#C8AEB2` |
+| Border                                          | `#746666` | `#8E7C69` |
+| Text                                            | `#D8CFC4` | `#382F2B` |
+| Bright text                                     | `#E9DFD0` | `#292626` |
+| Comments                                        | `#A3A187` | `#5B5A47` |
+| Keywords / booleans — burgundy                  | `#C58F9D` | `#87455A` |
+| Functions / search — brass                      | `#D1B078` | `#74541C` |
+| Strings / characters — green ink                | `#65AA88` | `#2B674D` |
+| Cartographic contours — khaki                   | `#B1A178` | `#675834` |
+| Numbers / warnings — ochre                      | `#D29A69` | `#864A20` |
+| Types / classes / information — enamel blue     | `#5B93BC` | `#36739C` |
+| Preprocessor / map labels — steel               | `#7899A0` | `#405B62` |
+| Operators / secondary text                      | `#B7AAA3` | `#615751` |
+| Properties                                      | `#C6B8AA` | `#685448` |
+| Builtins — industrial turquoise                 | `#45A39E` | `#176466` |
+| Hints / cartographic grid — olive               | `#A8AC7D` | `#585C3B` |
+| Added lines / ANSI green                        | `#B8BA73` | `#4B602D` |
+| ANSI bright green                               | `#CED08B` | `#426020` |
+| Primary headings / Normal mode — printing red   | `#E36A5B` | `#9C382E` |
+| Errors                                          | `#EF7565` | `#A62D24` |
+| Removed lines / substitutions — dark red        | `#A14C45` | `#843C35` |
+| Brown                                           | `#B28A75` | `#74523F` |
 
-Comments and secondary elements are deliberately subdued. Adjust `palette.comment`, `palette.muted`, or `palette.border` to suit your display.
+Comments and structural elements are deliberately subdued. Adjust `palette.comment`, `palette.muted`, `palette.olive`, or `palette.border` to suit your display.
 
 ## Integrations
 
@@ -226,7 +226,11 @@ Plugin coverage includes Aerial, ALE, Alpha, Barbar, Blink, Bufferline, Codeium,
 
 Core Vim syntax, Tree-sitter, LSP semantic tokens, diagnostics, inlay hints, diff views, and completion-kind groups are always available. Integrations define highlights only; they never load the corresponding plugins.
 
-Plugin UI uses brass and ochre as its primary accents, with burgundy, olive, and turquoise for secondary states. Enamel blue is deliberately reserved for types, file paths, and informational diagnostics so it does not dominate LazyVim's interface.
+Plugin UI uses brass and ochre as its working accents, with burgundy and turquoise for secondary states. Printing red appears only at primary focal points and critical states. Enamel blue is reserved for types, file paths, information, and Insert mode so it does not dominate LazyVim's interface.
+
+Bold keywords and types create a compact typographic hierarchy while functions, variables, and body text keep their normal weight. Headings progress through red, burgundy, brass, enamel blue, olive, and muted ink. Dashboard integrations follow the same structure with red headers, brass shortcuts, enamel-blue icons, and olive descriptions.
+
+A subdued cartographic layer uses olive grids, khaki contours, and steel labels for line numbers, folds, indent guides, inlay hints, Aerial, MiniMap, Neotest, and Snacks. It stays visually behind syntax and primary interface accents.
 
 LSP semantic tokens use the same roles as Tree-sitter. The final result depends on the parser's captures and the language server's tokens.
 
@@ -238,7 +242,7 @@ Apply the colorscheme before configuring lualine:
 require("lualine").setup({ options = { theme = "soviet" } })
 ```
 
-The lualine theme `soviet` follows the active variant. Fixed `soviet-dark` and `soviet-light` themes are also available. Lualine's default `theme = "auto"` discovers them by colorscheme name.
+The lualine theme `soviet` follows the active variant. Fixed `soviet-dark` and `soviet-light` themes are also available. Lualine's default `theme = "auto"` discovers them by colorscheme name. Normal uses printing red, Insert enamel blue, Visual burgundy, Replace signal red, Command brass, and Terminal turquoise.
 
 The plugin clears its lualine theme cache when loading a colorscheme, allowing lualine's `ColorScheme` handler to pick up the new palette.
 
