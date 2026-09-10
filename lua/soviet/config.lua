@@ -1,6 +1,6 @@
 local M = {}
 
-M.version = "1.0.0"
+M.version = "1.0.2"
 
 ---@class SovietConfig
 ---@field transparent boolean
